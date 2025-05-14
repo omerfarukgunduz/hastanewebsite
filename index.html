@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Örnek Diyaliz Merkezi | Kaliteli Sağlık Hizmeti</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- AOS Animasyon Kütüphanesi -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1a73e8;
+        --secondary: #34a853;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --gray: #6c757d;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* Header ve Navbar Stilleri */
+      .navbar {
+        padding: 20px 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-scrolled {
+        padding: 10px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background-color: white !important;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: var(--primary) !important;
+      }
+
+      .navbar-brand span {
+        color: var(--secondary);
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: var(--dark) !important;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary) !important;
+      }
+
+      .navbar-toggler {
+        border: none;
+        outline: none;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+            rgba(26, 115, 232, 0.8),
+            rgba(52, 168, 83, 0.8)
+          ),
+          url("/api/placeholder/1200/600") center/cover no-repeat;
+        min-height: 85vh;
+        color: white;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-weight: 700;
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      /* Hizmetler */
+      .section-title {
+        position: relative;
+        margin-bottom: 50px;
+        font-weight: 700;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        height: 4px;
+        width: 60px;
+        background-color: var(--primary);
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .service-box {
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+        background-color: white;
+        height: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .service-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(26, 115, 232, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+
+      .service-icon i {
+        font-size: 30px;
+        color: var(--primary);
+      }
+
+      /* Hakkımızda */
+      .about-img {
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .about-text {
+        padding: 30px 0;
+      }
+
+      .about-text h2 {
+        margin-bottom: 25px;
+        font-weight: 700;
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        color: var(--gray);
+      }
+
+      .feature-item {
+        margin-bottom: 15px;
+      }
+
+      .feature-item i {
+        color: var(--secondary);
+        margin-right: 10px;
+      }
+
+      /* Doktorlar */
+      .team-box {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .team-img {
+        transition: all 0.3s ease;
+      }
+
+      .team-info {
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        transition: all 0.3s ease;
+      }
+
+      .team-box:hover .team-info {
+        bottom: 0;
+      }
+
+      .team-box:hover .team-img {
+        transform: scale(1.1);
+      }
+
+      .team-info h4 {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .team-info p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 10px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border-radius: 50%;
+        line-height: 30px;
+        text-align: center;
+        color: var(--primary);
+        margin-right: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      /* Randevu */
+      .appointment {
+        background: linear-gradient(
+            rgba(52, 168, 83, 0.8),
+            rgba(26, 115, 232, 0.8)
+          ),
+          url("/api/placeholder/1200/600") center/cover no-repeat;
+        padding: 80px 0;
+        color: white;
+      }
+
+      .appointment-form {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .appointment-form h3 {
+        color: var(--dark);
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .form-control {
+        height: 50px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      textarea.form-control {
+        height: 120px;
+      }
+
+      /* Testimonials */
+      .testimonial-box {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+      }
+
+      .testimonial-box p {
+        color: var(--gray);
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .author-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+      }
+
+      .author-info h5 {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      /* İletişim */
+      .contact-box {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        height: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .contact-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(26, 115, 232, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+
+      .contact-icon i {
+        font-size: 24px;
+        color: var(--primary);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: rgba(255, 255, 255, 0.7);
+        padding: 80px 0 0;
+      }
+
+      .footer-heading {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 25px;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .footer-bottom {
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 60px;
+      }
+
+      /* Back to Top */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 40px;
+        height: 40px;
+        background-color: var(--primary);
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Responsive */
+      @media (max-width: 991px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-img {
+          margin-bottom: 30px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Örnek<span>Diyaliz</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Hakkımızda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Hizmetlerimiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#doctors">Doktorlarımız</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#appointment">Randevu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">İletişim</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container text-center" data-aos="fade-up">
+        <h1>Örnek Diyaliz Merkezi'ne Hoşgeldiniz</h1>
+        <p>
+          Profesyonel ekip ve modern cihazlarımızla, hastalarımıza en kaliteli
+          diyaliz hizmetini sunuyoruz. Örnek Diyaliz ile sağlıklı bir yaşam için
+          yanınızdayız.
+        </p>
+        <div class="d-flex justify-content-center">
+          <a href="#appointment" class="btn btn-light btn-lg me-3"
+            >Randevu Al</a
+          >
+          <a href="#services" class="btn btn-outline-light btn-lg"
+            >Hizmetlerimiz</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Hizmetlerimiz -->
+    <section id="services" class="py-5">
+      <div class="container py-5">
+        <h2 class="section-title text-center" data-aos="fade-up">
+          Hizmetlerimiz
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-box text-center">
+              <div class="service-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <h4 class="mb-3">Hemodiyaliz</h4>
+              <p>
+                Modern cihazlarımız ve uzman kadromuzla kaliteli hemodiyaliz
+                hizmeti sunuyoruz.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-box text-center">
+              <div class="service-icon">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+              <h4 class="mb-3">Periton Diyalizi</h4>
+              <p>
+                Ev ortamında periton diyalizi uygulamaları için eğitim ve
+                danışmanlık hizmetleri veriyoruz.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-box text-center">
+              <div class="service-icon">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <h4 class="mb-3">Beslenme Danışmanlığı</h4>
+              <p>
+                Uzman diyetisyenlerimizle kişiye özel beslenme programları
+                hazırlıyoruz.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-box text-center">
+              <div class="service-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h4 class="mb-3">Psikolojik Destek</h4>
+              <p>
+                Uzman psikologlarımızla hastaların tedavi sürecine psikolojik
+                destek sağlıyoruz.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-box text-center">
+              <div class="service-icon">
+                <i class="fas fa-ambulance"></i>
+              </div>
+              <h4 class="mb-3">Ulaşım Hizmeti</h4>
+              <p>
+                Hastalarımız için özel servis araçlarımızla güvenli ulaşım
+                hizmeti sunuyoruz.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-box text-center">
+              <div class="service-icon">
+                <i class="fas fa-flask"></i>
+              </div>
+              <h4 class="mb-3">Laboratuvar Hizmetleri</h4>
+              <p>
+                Modern laboratuvarımızda hızlı ve güvenilir sonuçlar için test
+                hizmetleri sunuyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hakkımızda -->
+    <section id="about" class="py-5 bg-light">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="about-img">
+              <img
+                src="https://i.hizliresim.com/io75sub.jpg?_gl=1*1hiibho*_ga*Njc2NTUyNjEyLjE3NDcyNTI3MDU.*_ga_M9ZRXYS2YN*czE3NDcyNTI3MDQkbzEkZzEkdDE3NDcyNTI3MjUkajM5JGwwJGgw"
+                alt="Örnek Diyaliz Merkezi"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="about-text">
+              <h2>Hakkımızda</h2>
+              <p>
+                Örnek Diyaliz Merkezi olarak 2010 yılından beri hastalarımıza en
+                kaliteli diyaliz hizmetini sunmak için çalışıyoruz. Modern
+                teknolojiyi kullanan, hasta odaklı yaklaşımı benimseyen
+                merkezimizde uzman kadromuzla hizmet vermekteyiz.
+              </p>
+              <p>
+                Amacımız, hastalarımızın yaşam kalitesini artırmak ve onlara
+                konforlu bir tedavi süreci sağlamaktır. Tüm hastalarımıza
+                bireysel yaklaşımla, ihtiyaçlarına uygun tedavi planları
+                hazırlamaktayız.
+              </p>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i> Modern cihazlar ve teknoloji
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i> Uzman hekim ve sağlık
+                personeli kadrosu
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i> Konforlu tedavi ortamı
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i> Hijyenik koşullar
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i> 7/24 hasta desteği
+              </div>
+              <a href="#contact" class="btn btn-primary mt-4"
+                >Daha Fazla Bilgi</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doktorlarımız -->
+    <section id="doctors" class="py-5">
+      <div class="container py-5">
+        <h2 class="section-title text-center" data-aos="fade-up">
+          Uzman Kadromuz
+        </h2>
+        <div class="row g-4">
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="team-box">
+              <div class="team-img">
+                <img
+                  src="https://rosehillhospital.com/wp-content/uploads/2024/05/360_F_601954739_dJ0VcsEl7js0vq8Ag2hx8giMpo71km3o.jpg"
+                  alt="Doktor"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="team-info">
+                <h4>Dr. Ahmet Yılmaz</h4>
+                <p>Nefroloji Uzmanı</p>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="team-box">
+              <div class="team-img">
+                <img
+                  src="https://rosehillhospital.com/wp-content/uploads/2024/05/360_F_601954739_dJ0VcsEl7js0vq8Ag2hx8giMpo71km3o.jpg"
+                  alt="Doktor"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="team-info">
+                <h4>Dr. Ayşe Demir</h4>
+                <p>İç Hastalıkları Uzmanı</p>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="team-box">
+              <div class="team-img">
+                <img
+                  src="https://rosehillhospital.com/wp-content/uploads/2024/05/360_F_601954739_dJ0VcsEl7js0vq8Ag2hx8giMpo71km3o.jpg"
+                  alt="Doktor"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="team-info">
+                <h4>Dr. Mehmet Kaya</h4>
+                <p>Nefroloji Uzmanı</p>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="team-box">
+              <div class="team-img">
+                <img
+                  src="https://rosehillhospital.com/wp-content/uploads/2024/05/360_F_601954739_dJ0VcsEl7js0vq8Ag2hx8giMpo71km3o.jpg"
+                  alt="Doktor"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="team-info">
+                <h4>Dr. Zeynep Öztürk</h4>
+                <p>Kardiyoloji Uzmanı</p>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Randevu -->
+    <section id="appointment" class="appointment">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mx-auto" data-aos="fade-up">
+            <div class="appointment-form">
+              <h3>Randevu Alın</h3>
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Adınız Soyadınız"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="E-posta Adresiniz"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input
+                      type="tel"
+                      class="form-control"
+                      placeholder="Telefon Numaranız"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input type="date" class="form-control" />
+                  </div>
+                </div>
+                <select class="form-select form-control">
+                  <option selected>Bölüm Seçin</option>
+                  <option value="1">Hemodiyaliz</option>
+                  <option value="2">Periton Diyalizi</option>
+                  <option value="3">Beslenme Danışmanlığı</option>
+                  <option value="4">Psikolojik Destek</option>
+                </select>
+                <textarea
+                  class="form-control"
+                  placeholder="Mesajınız (İsteğe bağlı)"
+                ></textarea>
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  Randevu Talep Et
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hasta Yorumları -->
+    <section class="py-5">
+      <div class="container py-5">
+        <h2 class="section-title text-center" data-aos="fade-up">
+          Hasta Yorumları
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-box">
+              <div class="mb-4">
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+              </div>
+              <p>
+                "Örnek Diyaliz Merkezi'nde tedavim boyunca çok iyi bir hizmet
+                aldım. Personel her zaman yardımcı ve güler yüzlüydü. Temizlik
+                ve hijyen konusunda çok titizler. Herkese tavsiye ederim."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-img">
+                  <img
+                    src="https://w7.pngwing.com/pngs/741/68/png-transparent-user-computer-icons-user-miscellaneous-cdr-rectangle-thumbnail.png"
+                    alt="Hasta"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="author-info">
+                  <h5>Ali Yıldız</h5>
+                  <p class="text-muted">Hasta</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-box">
+              <div class="mb-4">
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+              </div>
+              <p>
+                "Doktorlarının ilgisi ve bilgisi sayesinde tedavi sürecim çok
+                daha kolay geçti. Merkezin modern cihazları ve konforlu ortamı
+                sayesinde kendimi hep güvende hissettim. Teşekkürler Örnek
+                Diyaliz."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-img">
+                  <img
+                    src="https://w7.pngwing.com/pngs/741/68/png-transparent-user-computer-icons-user-miscellaneous-cdr-rectangle-thumbnail.png"
+                    alt="Hasta"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="author-info">
+                  <h5>Ayşe Kara</h5>
+                  <p class="text-muted">Hasta</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-box">
+              <div class="mb-4">
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+              </div>
+              <p>
+                "Bir yıldır Örnek Diyaliz'de tedavi görüyorum. Servis araçları
+                sayesinde ulaşım sorunu yaşamıyorum. Hemşireler çok ilgili ve
+                her zaman destek oluyorlar. Bu merkezi tercih ettiğim için çok
+                memnunum."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-img">
+                  <img
+                    src="https://w7.pngwing.com/pngs/741/68/png-transparent-user-computer-icons-user-miscellaneous-cdr-rectangle-thumbnail.png"
+                    alt="Hasta"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="author-info">
+                  <h5>Mehmet Öz</h5>
+                  <p class="text-muted">Hasta</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- İletişim -->
+    <section id="contact" class="py-5 bg-light">
+      <div class="container py-5">
+        <h2 class="section-title text-center" data-aos="fade-up">İletişim</h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-box text-center">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h4 class="mb-3">Adres</h4>
+              <p>Atatürk Cad. No:123, Merkez</p>
+              <p>34000 İstanbul, Türkiye</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-box text-center">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <h4 class="mb-3">Telefon</h4>
+              <p>+90 212 123 45 67</p>
+              <p>+90 532 987 65 43</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="contact-box text-center">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h4 class="mb-3">E-posta</h4>
+              <p>info@hayatdiyaliz.com</p>
+              <p>randevu@hayatdiyaliz.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <form class="bg-white p-4 rounded shadow-sm">
+              <h4 class="mb-4">Bize Ulaşın</h4>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Adınız Soyadınız"
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="E-posta Adresiniz"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Konu" />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  placeholder="Mesajınız"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Gönder</button>
+            </form>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="bg-white p-4 rounded shadow-sm h-100">
+              <h4 class="mb-4">Harita</h4>
+              <div class="ratio ratio-16x9">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12036.633136039225!2d28.9743794!3d41.0055002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9aa8d441b0f%3A0x9a47c18e7d83c124!2sİstanbul!5e0!3m2!1str!2str!4v1715677420000!5m2!1str!2str"
+                  width="600"
+                  height="450"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="rounded"
+                ></iframe>
+              </div>
+
+              <div class="mt-3">
+                <p class="mb-2">
+                  <i class="fas fa-clock me-2 text-primary"></i>
+                  <strong>Çalışma Saatleri:</strong>
+                </p>
+                <p class="ms-4 mb-1">Pazartesi - Cuma: 08:00 - 18:00</p>
+                <p class="ms-4 mb-1">Cumartesi: 09:00 - 14:00</p>
+                <p class="ms-4">Pazar: Kapalı</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-5">
+            <h4 class="footer-heading">Örnek Diyaliz</h4>
+            <p>
+              Profesyonel ekibimiz ve modern teknolojimizle diyaliz hastalarına
+              kaliteli sağlık hizmeti sunuyoruz.
+            </p>
+            <div class="social-links mt-4">
+              <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+              <a href="https://grabify.link/SQ88JX" class="me-2"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5">
+            <h4 class="footer-heading">Hızlı Bağlantılar</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="#home"
+                  ><i class="fas fa-angle-right me-2"></i> Ana Sayfa</a
+                >
+              </li>
+              <li>
+                <a href="#about"
+                  ><i class="fas fa-angle-right me-2"></i> Hakkımızda</a
+                >
+              </li>
+              <li>
+                <a href="#services"
+                  ><i class="fas fa-angle-right me-2"></i> Hizmetlerimiz</a
+                >
+              </li>
+              <li>
+                <a href="#doctors"
+                  ><i class="fas fa-angle-right me-2"></i> Doktorlarımız</a
+                >
+              </li>
+              <li>
+                <a href="#appointment"
+                  ><i class="fas fa-angle-right me-2"></i> Randevu</a
+                >
+              </li>
+              <li>
+                <a href="#contact"
+                  ><i class="fas fa-angle-right me-2"></i> İletişim</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5">
+            <h4 class="footer-heading">Hizmetlerimiz</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="#"
+                  ><i class="fas fa-angle-right me-2"></i> Hemodiyaliz</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-angle-right me-2"></i> Periton Diyalizi</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-angle-right me-2"></i> Beslenme
+                  Danışmanlığı</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-angle-right me-2"></i> Psikolojik Destek</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-angle-right me-2"></i> Laboratuvar
+                  Hizmetleri</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-angle-right me-2"></i> Ulaşım Hizmetleri</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5">
+            <h4 class="footer-heading">İletişim Bilgileri</h4>
+            <p>
+              <i class="fas fa-map-marker-alt me-3"></i> Atatürk Cad. No:123,
+              Merkez, 34000 İstanbul
+            </p>
+            <p><i class="fas fa-phone me-3"></i> +90 212 123 45 67</p>
+            <p><i class="fas fa-envelope me-3"></i> info@hayatdiyaliz.com</p>
+            <p><i class="fas fa-globe me-3"></i> www.hayatdiyaliz.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="m-0">© 2025 Örnek Diyaliz Merkezi. Tüm Hakları Saklıdır.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Custom JS -->
+    <script>
+      // AOS Animasyon Başlatma
+      AOS.init({
+        duration: 1000,
+        once: true,
+        easing: "ease",
+      });
+
+      // Navbar Scroll Efekti
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("navbar-scrolled");
+        } else {
+          navbar.classList.remove("navbar-scrolled");
+        }
+
+        // Back to Top Button
+        const backToTop = document.querySelector(".back-to-top");
+        if (window.scrollY > 300) {
+          backToTop.classList.add("active");
+        } else {
+          backToTop.classList.remove("active");
+        }
+      });
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const target = document.querySelector(targetId);
+          if (target) {
+            const navbarHeight = document.querySelector(".navbar").offsetHeight;
+            const targetPosition = target.offsetTop - navbarHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+
+            // Navbar Collapse kapanması için (mobil görünümde)
+            const navbarCollapse = document.querySelector(".navbar-collapse");
+            if (navbarCollapse.classList.contains("show")) {
+              navbarCollapse.classList.remove("show");
+            }
+          }
+        });
+      });
+
+      // Form Validation
+      const forms = document.querySelectorAll("form");
+      forms.forEach((form) => {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          // Form validation ve submission işlemleri burada yapılabilir
+          alert("Form başarıyla gönderildi! Bu bir demo mesajıdır.");
+          form.reset();
+        });
+      });
+    </script>
+  </body>
+</html>
